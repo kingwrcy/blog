@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>日积月累</title>
-    <link>https://blog.kingwrcy.cn/</link>
+    <link>https://kingwrcy.github.io/blog/</link>
     <description>Recent content on 日积月累</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh_cn</language>
     <copyright>&amp;copy; 2018 |  &lt;a href=&#34;https://github.com/mgjohansen/hucore.git&#34; target=&#34;_blank&#34;&gt;Hucore theme&lt;/a&gt; &amp; &lt;a href=&#34;http://gohugo.io&#34; target=&#34;_blank&#34;&gt;Hugo&lt;/a&gt; ♥</copyright>
     <lastBuildDate>Thu, 19 Jul 2018 21:33:13 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.kingwrcy.cn/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://kingwrcy.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>广度优先算法-golang实现</title>
-      <link>https://blog.kingwrcy.cn/posts/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E7%AE%97%E6%B3%95-golang%E5%AE%9E%E7%8E%B0/</link>
+      <link>https://kingwrcy.github.io/blog/posts/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E7%AE%97%E6%B3%95-golang%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Thu, 19 Jul 2018 21:33:13 +0800</pubDate>
       
-      <guid>https://blog.kingwrcy.cn/posts/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E7%AE%97%E6%B3%95-golang%E5%AE%9E%E7%8E%B0/</guid>
+      <guid>https://kingwrcy.github.io/blog/posts/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E7%AE%97%E6%B3%95-golang%E5%AE%9E%E7%8E%B0/</guid>
       <description>package main import ( &amp;quot;fmt&amp;quot; ) type point struct { x, y int //节点坐标 } type node struct { point vistied bool //是否已访问过 available bool //是否可用 step int //走到这节点所需的步骤数目 } // 迷宫 type maze [][]node // 获取坐标 x,y处的node对象 func (m *maze) getPosition(x, y int) (n *node) { return &amp;amp;((*m)[x][y]) } func (m *maze) getLineCount() int{ return len(*m) } func (m *maze) getColumnCount() int{ return len((*m)[0]) } var data = [5][9]int{ {0, 1, 0, 1, 0, 0, 0, 1, 0}, {0, 1, 0, 1, 0, 1, 0, 1, 0}, {0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 0, 1, 1, 1, 1, 1, 0}, {0, 1, 1, 1, 1, 1, 1, 1, 0}, } var directions = []point{ //四个方向,上-&amp;gt;左-&amp;gt;下-&amp;gt;右 {-1, 0}, {0, -1}, {1, 0}, {0, 1}, } //存放待搜索的队列 var queue = []*node{} //初始化迷宫 func initNodes() *maze { ll := len(data) //行 cl := len(data[0]) //列 n := maze{} for i := 0; i &amp;lt; ll; i++ { p := []node{} for j := 0; j &amp;lt; cl; j++ { p = append(p, node{ vistied: false, available: data[i][j] == 0, point: point{ x: i, y: j, }, }) } n = append(n, p) } return &amp;amp;n } // 四个方向移动,出界返回false,否则返回新节点 func (n *node) move(ns *maze, move point) (*node, bool) { if n.</description>
     </item>
     
