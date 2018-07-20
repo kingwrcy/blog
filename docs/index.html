@@ -1,117 +1,81 @@
 <!DOCTYPE html>
 <html lang="zh_cn">
 <head>
-	<meta name="generator" content="Hugo 0.37.1" />
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta content="博客, 程序员, 上海" name="keywords">
-<meta content="JerryWang" name="author">
-<meta property="og:title" content="日积月累">
-<meta property="og:url" content="https://kingwrcy.github.io/blog/">
-<meta property="og:description" content="个人博客">
-<meta property="og:type" content="website" />
-<title>日积月累</title>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
-<link rel="stylesheet" href="https://kingwrcy.github.io/blog//css/style.css">
-<link rel="shortcut icon" href="https://kingwrcy.github.io/blog//wave.ico">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
-
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>日积月累</title>
+  <meta property="og:title" content="日积月累" />
+  <meta name="twitter:title" content="日积月累" />
+  <meta name="author" content="JerryWang"/>
+  <meta property="og:site_name" content="日积月累" />
+  <meta property="og:url" content="https://kingwrcy.github.io/blog/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="generator" content="Hugo 0.44" />
+  <link href="/blog/index.xml" rel="alternate" type="application/rss+xml" title="日积月累" />
+  <link href="/blog/index.xml" rel="feed" type="application/rss+xml" title="日积月累" />
+  <link rel="stylesheet" href="/blog/css/style.css" media="all" />
+  <link rel="stylesheet" href="/blog/css/syntax.css" media="all" />
+  <link rel="stylesheet" href="/blog/css/custom.css" media="all" />
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
 </head>
 
-<section class="section">
-  <div class="container">
-    <nav class="nav">
-      <div class="nav-left">
-        <a class="nav-item" href="https://kingwrcy.github.io/blog/"><h1 class="title is-4">日积月累</h1></a>
-      </div>
-      <div class="nav-right">
-        <nav class="nav-item level is-mobile">
-          
-          <a class="level-item" href="https://github.com/kingwrcy" target="_blank">
-            <span class="icon">
-              <i class="fa fa-github"></i>
-            </span>
-          </a>
-          
-          <a class="level-item" href="/index.xml" target="_blank">
-            <span class="icon">
-              <i class="fa fa-rss"></i>
-            </span>
-          </a>
-          
-        </nav>
-      </div>
-    </nav>
-  </div>
-</section>
+<body>
 
-<section class="section">
-  <div class="container">
-    
-    <article>
-      <h1 class="title"><a href="https://kingwrcy.github.io/blog/posts/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E7%AE%97%E6%B3%95-golang%E5%AE%9E%E7%8E%B0/">广度优先算法-golang实现</a></h1>
-      <h2 class="subtitle is-5">July 19, 2018</h2>
-      
-      
-    </article>
-    
-  </div>
-</section>
-<section class="section">
-  <div class="container">
-    <nav class="level is-mobile">
-      <div class="level-left">
-        <div class="level-item">
+<header class="site-header">
+  <nav class="site-navi">
+    <h1 class="site-title"><a href="/blog/">日积月累</a></h1>
+    <ul class="site-navi-items">
+      <li class="site-navi-item-categories"><a href="/blog/categories/" title="分类">分类</a></li>
+      <li class="site-navi-item-tags"><a href="/blog/tags/" title="标签">标签</a></li>
+      <li class="site-navi-item-archives"><a href="/blog/archives/" title="归档">归档</a></li>
+      <li class="site-navi-item-about"><a href="/blog/about/" title="关于">关于</a></li>
+    </ul>
+  </nav>
+</header>
+<hr class="site-header-bottom">
+
+  <div class="main" role="main">
+    <section class="list home-list">
+      <article class="article">
+        <a href="/blog/posts/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E7%AE%97%E6%B3%95-golang%E5%AE%9E%E7%8E%B0/" class="article-titles">
+          <h2 class="article-title">广度优先算法-golang实现</h2>
           
+        </a>
+        <ul class="article-meta">
+          <li class="article-meta-date"><time>July 19, 2018</time></li>
+        </ul>
+        <div class="article-content">
+          package main import ( &quot;fmt&quot; ) type point struct { x, y int //节点坐标 } type node struct { point vistied bool //是否已访问过 available bool //是否可用 step int //走到这节点所需的步骤数目 } // 迷宫 type maze [][]node // 获取坐标 x,y处的node对象 func (m *maze) getPosition(x, y int) (n *node) { return &amp;((*m)[x][y]) } func (m *maze) getLineCount() int{ return len(*m) } func (m *maze) getColumnCount() int{ return len((*m)[0]) } var data = [5][9]int{ {0, 1, 0, 1, 0, 0, 0, 1, 0}, {0, 1, 0, 1, 0, 1, 0, 1, 0}, {0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 0, 1, 1, 1, 1, 1, 0}, {0, 1, 1, 1, 1, 1, 1, 1, 0}, } var directions = []point{ //四个方向,上-&gt;左-&gt;下-&gt;右 {-1, 0}, {0, -1}, {1, 0}, {0, 1}, } //存放待搜索的队列 var queue = []*node{} //初始化迷宫 func initNodes() *maze { ll := len(data) //行 cl := len(data[0]) //列 n := maze{} for i := 0; i &lt; ll; i++ { p := []node{} for j := 0; j &lt; cl; j++ { p = append(p, node{ vistied: false, available: data[i][j] == 0, point: point{ x: i, y: j, }, }) } n = append(n, p) } return &amp;n } // 四个方向移动,出界返回false,否则返回新节点 func (n *node) move(ns *maze, move point) (*node, bool) { if n.
         </div>
-      </div>
-      <div class="level-right is-marginless">
-        <div class="level-item">
-          
-        </div>
-      </div>
-    </nav>
+        <div class="article-readmore"><a href="/blog/posts/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E7%AE%97%E6%B3%95-golang%E5%AE%9E%E7%8E%B0/">Read more...</a></div>
+        <div class="article-floatclear"></div>
+      </article>
+    </section>
+    
+
   </div>
-</section>
 
-<section class="section">
-  <div class="container has-text-centered">
-    <p>&copy; 2018 |  <a href="https://github.com/mgjohansen/hucore.git" target="_blank">Hucore theme</a> & <a href="http://gohugo.io" target="_blank">Hugo</a> ♥</p>
+
+
+<div class="site-footer">
+  <div class="copyright">&copy; 2018 |  <a href="https://github.com/taikii/whiteplain.git" target="_blank">whiteplain theme</a> & <a href="http://gohugo.io" target="_blank">Hugo</a> ♥</div>
+  <ul class="site-footer-items">
+    <li class="site-footer-item-rsslink">
+      <a href="/blog/index.xml" type="application/rss+xml" target="_blank" title="RSS">
+        <i class="fas fa-rss"></i>
+      </a>
+    </li>
+    <li class="site-footer-item-about"><a href="/blog/about/" title="关于">关于</a></li>
+  </ul>
+  <div class="powerdby">
+    Powered by <a href="https://gohugo.io/">Hugo</a> and <a href="https://github.com/taikii/whiteplain">Whiteplain</a>
   </div>
-</section>
+</div>
+<script src="/blog/js/script.js"></script>
+<script src="/blog/js/custom.js"></script>
 
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js" integrity="sha256-+bhVTaRmJ/c07eV80nU8gD2cBBF0rYkf1txqXlrbvb0=" crossorigin="anonymous"></script>
-
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/go.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
-
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/dockerfile.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
-
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/html.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
-
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/js.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
-
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/python.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
-
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/java.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
-
-<script>hljs.initHighlightingOnLoad();</script>
-
-
-
+</body>
+</html>

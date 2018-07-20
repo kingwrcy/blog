@@ -1,46 +1,55 @@
-baseurl = "https://kingwrcy.github.io/blog"
+baseurl = "https://meng.cat"
 languageCode = "zh_cn"
+language = "zh-Hans"
 title = "日积月累"
-theme = "Hucore"
+theme = "whiteplain"
 publishDir = "docs"
-copyright = "&copy; 2018 |  <a href=\"https://github.com/mgjohansen/hucore.git\" target=\"_blank\">Hucore theme</a> & <a href=\"http://gohugo.io\" target=\"_blank\">Hugo</a> ♥"
-# disqusShortname = "shortname"
-# googleAnalytics = "trackingcode"
+copyright = "&copy; 2018 |  <a href=\"https://github.com/taikii/whiteplain.git\" target=\"_blank\">whiteplain theme</a> & <a href=\"http://gohugo.io\" target=\"_blank\">Hugo</a> ♥"
 
-[taxonomies]
-tag = "tag"
-category = "category"
+pygmentsCodefences = true #高亮markdown的代码块
+pygmentsCodefencesGuessSyntax = true #高亮markdown中没有标注语言的代码块
+pygmentsStyle = 'github' #高亮主题
+pygmentsUseClasses=true
+
 
 [params]
-description = "个人博客"
-keywords = ["博客", "程序员", "上海"]
-author = "JerryWang"
-sharingicons = false
+  # Date format
+  #dateFormat = "January 2, 2006"
 
-[params.highlight]
-style = "github"
-languages = ["go", "dockerfile","html","js","python","java"]
+# This is displayer in About page.
+[params.author]
+  name = "JerryWang"
+  # Gravatar or Abatar image
+  gravatar = "gaediy@gmail.com"
+  #avatar = "/path/to/avatar"
 
-[[params.social]]
-url = "https://github.com/kingwrcy"
-fa_icon = "fa-github"
+  email = "gaediy@gmail.com"
 
-# [[params.social]]
-# url = "https://gitlab.com/mgjohansen"
-# fa_icon = "fa-gitlab"
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  series = "series"
 
-# [[params.social]]
-# url = "https://twitter.com/mgjohansen"
-# fa_icon = "fa-twitter"
+# Header Menu
+[[menu.main]]
+  name = "分类"
+  identifier = "categories"
+  url = "/categories/"
+  weight = 1
+[[menu.main]]
+  name = "标签"
+  identifier = "tags"
+  url = "/tags/"
+  weight = 2
+[[menu.main]]
+  name = "关于"
+  identifier = "about"
+  url = "/about/"
+  weight = 3
 
-# [[params.social]]
-# url = "https://linkedin.com/in/mgjohansen"
-# fa_icon = "fa-linkedin-square"
-
-[[params.social]]
-url = "/index.xml"
-fa_icon = "fa-rss"
-
-# [[params.socialshare]]
-# url = "https://linkedin.com/in/mgjohansen"
-# fa_icon = "fa-linkedin-square"
+# Footer Menu
+[[menu.footer]]
+  name = "关于"
+  weight = 1
+  identifier = "about"
+  url = "/about/"

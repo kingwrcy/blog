@@ -1,66 +1,56 @@
 <!DOCTYPE html>
 <html lang="zh_cn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta content="博客, 程序员, 上海" name="keywords">
-<meta content="JerryWang" name="author">
-<meta property="og:title" content="广度优先算法-golang实现 - 日积月累">
-<meta property="og:url" content="https://kingwrcy.github.io/blog/posts/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E7%AE%97%E6%B3%95-golang%E5%AE%9E%E7%8E%B0/">
-<meta property="og:description" content="个人博客">
-<meta property="og:type" content="website" />
-<title>广度优先算法-golang实现 | 日积月累</title>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
-<link rel="stylesheet" href="https://kingwrcy.github.io/blog//css/style.css">
-<link rel="shortcut icon" href="https://kingwrcy.github.io/blog//wave.ico">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
-
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>广度优先算法-golang实现 - 日积月累</title>
+  <meta property="og:title" content="广度优先算法-golang实现 - 日积月累" />
+  <meta name="twitter:title" content="广度优先算法-golang实现 - 日积月累" />
+  <meta name="description" content="package main import ( &quot;fmt&quot; ) type point struct { x, y int //节点坐标 } type node struct { point vistied bool //是否已访问过 available bool //是否可用 step int //走到这节点所需的步骤数目 } // 迷宫 type maze [][]node // 获取坐标 x,y处的node对象 func (m *maze) getPosition(x, y int) (n *node) { return &amp;((*m)[x][y]) } func (m *maze) getLineCount() int{ return len(*m) } func (m *maze) getColumnCount() int{ return len((*m)[0]) } var data = [5][9]int{ {0, 1, 0, 1, 0, 0, 0, 1, 0}, {0, 1, 0, 1, 0, 1, 0, 1, 0}, {0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 0, 1, 1, 1, 1, 1, 0}, {0, 1, 1, 1, 1, 1, 1, 1, 0}, } var directions = []point{ //四个方向,上-&gt;左-&gt;下-&gt;右 {-1, 0}, {0, -1}, {1, 0}, {0, 1}, } //存放待搜索的队列 var queue = []*node{} //初始化迷宫 func initNodes() *maze { ll := len(data) //行 cl := len(data[0]) //列 n := maze{} for i := 0; i &lt; ll; i&#43;&#43; { p := []node{} for j := 0; j &lt; cl; j&#43;&#43; { p = append(p, node{ vistied: false, available: data[i][j] == 0, point: point{ x: i, y: j, }, }) } n = append(n, p) } return &amp;n } // 四个方向移动,出界返回false,否则返回新节点 func (n *node) move(ns *maze, move point) (*node, bool) { if n.">
+  <meta property="og:description" content="package main import ( &quot;fmt&quot; ) type point struct { x, y int //节点坐标 } type node struct { point vistied bool //是否已访问过 available bool //是否可用 step int //走到这节点所需的步骤数目 } // 迷宫 type maze [][]node // 获取坐标 x,y处的node对象 func (m *maze) getPosition(x, y int) (n *node) { return &amp;((*m)[x][y]) } func (m *maze) getLineCount() int{ return len(*m) } func (m *maze) getColumnCount() int{ return len((*m)[0]) } var data = [5][9]int{ {0, 1, 0, 1, 0, 0, 0, 1, 0}, {0, 1, 0, 1, 0, 1, 0, 1, 0}, {0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 0, 1, 1, 1, 1, 1, 0}, {0, 1, 1, 1, 1, 1, 1, 1, 0}, } var directions = []point{ //四个方向,上-&gt;左-&gt;下-&gt;右 {-1, 0}, {0, -1}, {1, 0}, {0, 1}, } //存放待搜索的队列 var queue = []*node{} //初始化迷宫 func initNodes() *maze { ll := len(data) //行 cl := len(data[0]) //列 n := maze{} for i := 0; i &lt; ll; i&#43;&#43; { p := []node{} for j := 0; j &lt; cl; j&#43;&#43; { p = append(p, node{ vistied: false, available: data[i][j] == 0, point: point{ x: i, y: j, }, }) } n = append(n, p) } return &amp;n } // 四个方向移动,出界返回false,否则返回新节点 func (n *node) move(ns *maze, move point) (*node, bool) { if n.">
+  <meta name="twitter:description" content="package main import ( &quot;fmt&quot; ) type point struct { x, y int //节点坐标 } type node struct { point vistied bool //是否已访问过 available bool //是否可用 step int //走到这节点所需的步骤数目 } // 迷宫 type maze [][]node // …">
+  <meta name="author" content="JerryWang"/>
+  <meta property="og:site_name" content="日积月累" />
+  <meta property="og:url" content="https://kingwrcy.github.io/blog/posts/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E7%AE%97%E6%B3%95-golang%E5%AE%9E%E7%8E%B0/" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="generator" content="Hugo 0.44" />
+  <link rel="stylesheet" href="/blog/css/style.css" media="all" />
+  <link rel="stylesheet" href="/blog/css/syntax.css" media="all" />
+  <link rel="stylesheet" href="/blog/css/custom.css" media="all" />
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
 </head>
 
 <body>
-<section class="section">
-  <div class="container">
-    <nav class="nav">
-      <div class="nav-left">
-        <a class="nav-item" href="https://kingwrcy.github.io/blog/"><h1 class="title is-4">日积月累</h1></a>
-      </div>
-      <div class="nav-right">
-        <nav class="nav-item level is-mobile">
-          
-          <a class="level-item" href="https://github.com/kingwrcy" target="_blank">
-            <span class="icon">
-              <i class="fa fa-github"></i>
-            </span>
-          </a>
-          
-          <a class="level-item" href="/index.xml" target="_blank">
-            <span class="icon">
-              <i class="fa fa-rss"></i>
-            </span>
-          </a>
-          
-        </nav>
-      </div>
-    </nav>
-  </div>
-</section>
 
-<section class="section">
-  <div class="container">
-    <h1 class="title">广度优先算法-golang实现</h1>
-    <h2 class="subtitle is-5">July 19, 2018 by JerryWang</h2>
-    
-    <div class="content">
+<header class="site-header">
+  <nav class="site-navi">
+    <h1 class="site-title"><a href="/blog/">日积月累</a></h1>
+    <ul class="site-navi-items">
+      <li class="site-navi-item-categories"><a href="/blog/categories/" title="分类">分类</a></li>
+      <li class="site-navi-item-tags"><a href="/blog/tags/" title="标签">标签</a></li>
+      <li class="site-navi-item-archives"><a href="/blog/archives/" title="归档">归档</a></li>
+      <li class="site-navi-item-about"><a href="/blog/about/" title="关于">关于</a></li>
+    </ul>
+  </nav>
+</header>
+<hr class="site-header-bottom">
+
+  <div class="main" role="main">
+    <article class="article">
+      
+      
+      <h1 class="article-title">广度优先算法-golang实现</h1>
+      
+      <hr class="article-title-bottom">
+      <ul class="article-meta">
+        <li class="article-meta-date"><time>July 19, 2018</time></li>
+      </ul>
+      
+<aside class="toc">
+  
+</aside>
       <pre><code class="language-golang">package main
 
 import (
@@ -207,40 +197,56 @@ func main() {
 
 </code></pre>
 
-    </div>
+    </article>
+
     
+<ul class="article-share">
+  <li>
+    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+  </li>
+  <li>
+    <div class="fb-share-button" data-href="https://kingwrcy.github.io/blog/posts/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E7%AE%97%E6%B3%95-golang%E5%AE%9E%E7%8E%B0/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.10";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+  </li>
+  <li>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <g:plus action="share"></g:plus>
+  </li>
+  <li>
+    <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label-counter" data-hatena-bookmark-lang="en" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  </li>
+  <li>
+    <a data-pocket-label="pocket" data-pocket-count="horizontal" class="pocket-btn" data-lang="en"></a>
+    <script>!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+  </li>
+</ul>
+
+    <ul class="pager article-pager">
+      <li class="pager-newer pager-noitem">&lt; Newer</li>
+      <li class="pager-older pager-noitem">Older &gt;</li>
+    </ul>
   </div>
-</section>
 
 
-<section class="section">
-  <div class="container has-text-centered">
-    <p>&copy; 2018 |  <a href="https://github.com/mgjohansen/hucore.git" target="_blank">Hucore theme</a> & <a href="http://gohugo.io" target="_blank">Hugo</a> ♥</p>
+<div class="site-footer">
+  <div class="copyright">&copy; 2018 |  <a href="https://github.com/taikii/whiteplain.git" target="_blank">whiteplain theme</a> & <a href="http://gohugo.io" target="_blank">Hugo</a> ♥</div>
+  <ul class="site-footer-items">
+    <li class="site-footer-item-about"><a href="/blog/about/" title="关于">关于</a></li>
+  </ul>
+  <div class="powerdby">
+    Powered by <a href="https://gohugo.io/">Hugo</a> and <a href="https://github.com/taikii/whiteplain">Whiteplain</a>
   </div>
-</section>
-
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js" integrity="sha256-+bhVTaRmJ/c07eV80nU8gD2cBBF0rYkf1txqXlrbvb0=" crossorigin="anonymous"></script>
-
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/go.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
-
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/dockerfile.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
-
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/html.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
-
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/js.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
-
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/python.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
-
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/java.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js"></script>
-
-<script>hljs.initHighlightingOnLoad();</script>
+</div>
+<script src="/blog/js/script.js"></script>
+<script src="/blog/js/custom.js"></script>
 
 
 </body>
+</html>
