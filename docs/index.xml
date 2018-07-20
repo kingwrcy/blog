@@ -2,23 +2,33 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>日积月累</title>
-    <link>https://kingwrcy.github.io/blog/</link>
+    <link>https://meng.cat/</link>
     <description>Recent content on 日积月累</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh_cn</language>
     <copyright>&amp;copy; 2018 |  &lt;a href=&#34;https://github.com/taikii/whiteplain.git&#34; target=&#34;_blank&#34;&gt;whiteplain theme&lt;/a&gt; &amp; &lt;a href=&#34;http://gohugo.io&#34; target=&#34;_blank&#34;&gt;Hugo&lt;/a&gt; ♥</copyright>
     <lastBuildDate>Thu, 19 Jul 2018 21:33:13 +0800</lastBuildDate>
     
-	<atom:link href="https://kingwrcy.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://meng.cat/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>广度优先算法-golang实现</title>
-      <link>https://kingwrcy.github.io/blog/posts/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E7%AE%97%E6%B3%95-golang%E5%AE%9E%E7%8E%B0/</link>
+      <link>https://meng.cat/posts/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E7%AE%97%E6%B3%95-golang%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Thu, 19 Jul 2018 21:33:13 +0800</pubDate>
       
-      <guid>https://kingwrcy.github.io/blog/posts/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E7%AE%97%E6%B3%95-golang%E5%AE%9E%E7%8E%B0/</guid>
-      <description>package main import ( &amp;quot;fmt&amp;quot; ) type point struct { x, y int //节点坐标 } type node struct { point vistied bool //是否已访问过 available bool //是否可用 step int //走到这节点所需的步骤数目 } // 迷宫 type maze [][]node // 获取坐标 x,y处的node对象 func (m *maze) getPosition(x, y int) (n *node) { return &amp;amp;((*m)[x][y]) } func (m *maze) getLineCount() int{ return len(*m) } func (m *maze) getColumnCount() int{ return len((*m)[0]) } var data = [5][9]int{ {0, 1, 0, 1, 0, 0, 0, 1, 0}, {0, 1, 0, 1, 0, 1, 0, 1, 0}, {0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 0, 1, 1, 1, 1, 1, 0}, {0, 1, 1, 1, 1, 1, 1, 1, 0}, } var directions = []point{ //四个方向,上-&amp;gt;左-&amp;gt;下-&amp;gt;右 {-1, 0}, {0, -1}, {1, 0}, {0, 1}, } //存放待搜索的队列 var queue = []*node{} //初始化迷宫 func initNodes() *maze { ll := len(data) //行 cl := len(data[0]) //列 n := maze{} for i := 0; i &amp;lt; ll; i++ { p := []node{} for j := 0; j &amp;lt; cl; j++ { p = append(p, node{ vistied: false, available: data[i][j] == 0, point: point{ x: i, y: j, }, }) } n = append(n, p) } return &amp;amp;n } // 四个方向移动,出界返回false,否则返回新节点 func (n *node) move(ns *maze, move point) (*node, bool) { if n.</description>
+      <guid>https://meng.cat/posts/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E7%AE%97%E6%B3%95-golang%E5%AE%9E%E7%8E%B0/</guid>
+      <description>&lt;h1 id=&#34;广度优先-bfs&#34;&gt;广度优先(BFS)&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2&#34;&gt;WIKI介绍&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;广度优先搜索算法（英语：Breadth-First-Search，缩写为BFS），又译作宽度优先搜索，或横向优先搜索，是一种图形搜索算法。简单的说，BFS是从根节点开始，沿着树的宽度遍历树的节点。如果所有节点均被访问，则算法中止。广度优先搜索的实现一般采用open-closed表。&lt;/p&gt;
+
+&lt;p&gt;BFS是一种盲目搜索法，目的是系统地展开并检查图中的所有节点，以找寻结果。换句话说，它并不考虑结果的可能地址，彻底地搜索整张图，直到找到结果为止。BFS并不使用经验法则算法。&lt;/p&gt;
+
+&lt;p&gt;从算法的观点，所有因为展开节点而得到的子节点都会被加进一个先进先出的队列中。一般的实现里，其邻居节点尚未被检验过的节点会被放置在一个被称为 open 的容器中（例如队列或是链表），而被检验过的节点则被放置在被称为 closed 的容器中。（open-closed表）&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -2,13 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Series on 日积月累</title>
-    <link>https://kingwrcy.github.io/blog/series/</link>
+    <link>https://meng.cat/series/</link>
     <description>Recent content in Series on 日积月累</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh_cn</language>
     <copyright>&amp;copy; 2018 |  &lt;a href=&#34;https://github.com/taikii/whiteplain.git&#34; target=&#34;_blank&#34;&gt;whiteplain theme&lt;/a&gt; &amp; &lt;a href=&#34;http://gohugo.io&#34; target=&#34;_blank&#34;&gt;Hugo&lt;/a&gt; ♥</copyright>
     
-	<atom:link href="https://kingwrcy.github.io/blog/series/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://meng.cat/series/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>

@@ -1,0 +1,16 @@
+body{
+    font-family: "Comic Sans MS", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", "Microsoft Yahei", sans-serif !important;
+}
+
+pre,code{
+    font-family: "SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace !important;
+    padding:0 10px !important;
+}
+
+pre > code > span:nth-child(1)
+{
+    padding-left: 0px !important;
+    position: relative !important;
+    left: -4px !important;
+    line-height: 1.3em !important;
+}

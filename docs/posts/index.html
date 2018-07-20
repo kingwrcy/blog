@@ -8,16 +8,16 @@
   <meta name="twitter:title" content="Posts - 日积月累" />
   <meta name="author" content="JerryWang"/>
   <meta property="og:site_name" content="日积月累" />
-  <meta property="og:url" content="https://kingwrcy.github.io/blog/posts/" />
+  <meta property="og:url" content="https://meng.cat/posts/" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary" />
   <meta name="generator" content="Hugo 0.44" />
-  <link href="/blog/posts/index.xml" rel="alternate" type="application/rss+xml" title="日积月累" />
-  <link href="/blog/posts/index.xml" rel="feed" type="application/rss+xml" title="日积月累" />
-  <link rel="stylesheet" href="/blog/css/style.css" media="all" />
-  <link rel="stylesheet" href="/blog/css/syntax.css" media="all" />
-  <link rel="stylesheet" href="/blog/css/custom.css" media="all" />
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <link href="/posts/index.xml" rel="alternate" type="application/rss+xml" title="日积月累" />
+  <link href="/posts/index.xml" rel="feed" type="application/rss+xml" title="日积月累" />
+  <link rel="stylesheet" href="/css/style.css" media="all" />
+  <link rel="stylesheet" href="/css/syntax.css" media="all" />
+  <link rel="stylesheet" href="/css/custom.css" media="all" />
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js" ></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
 </head>
 
@@ -25,12 +25,11 @@
 
 <header class="site-header">
   <nav class="site-navi">
-    <h1 class="site-title"><a href="/blog/">日积月累</a></h1>
+    <h1 class="site-title"><a href="/">日积月累</a></h1>
     <ul class="site-navi-items">
-      <li class="site-navi-item-categories"><a href="/blog/categories/" title="分类">分类</a></li>
-      <li class="site-navi-item-tags"><a href="/blog/tags/" title="标签">标签</a></li>
-      <li class="site-navi-item-archives"><a href="/blog/archives/" title="归档">归档</a></li>
-      <li class="site-navi-item-about"><a href="/blog/about/" title="关于">关于</a></li>
+      <li class="site-navi-item-categories"><a href="/categories/" title="分类">分类</a></li>
+      <li class="site-navi-item-tags"><a href="/tags/" title="标签">标签</a></li>
+      <li class="site-navi-item-about"><a href="/about/" title="关于">关于</a></li>
     </ul>
   </nav>
 </header>
@@ -42,17 +41,33 @@
   <div class="main" role="main">
     <section class="list section-list">
       <article class="article">
-        <a href="/blog/posts/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E7%AE%97%E6%B3%95-golang%E5%AE%9E%E7%8E%B0/" class="article-titles">
+        <a href="/posts/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E7%AE%97%E6%B3%95-golang%E5%AE%9E%E7%8E%B0/" class="article-titles">
           <h2 class="article-title">广度优先算法-golang实现</h2>
           
         </a>
         <ul class="article-meta">
-          <li class="article-meta-date"><time>July 19, 2018</time></li>
+          <li class="article-meta-date"><time>2018,July 19</time></li>
+          <li class="article-meta-categories">
+            <a href="/categories/golang/">
+              <i class="fas fa-folder"></i>
+              golang
+            </a>&nbsp;
+          </li>
         </ul>
         <div class="article-content">
-          package main import ( &quot;fmt&quot; ) type point struct { x, y int //节点坐标 } type node struct { point vistied bool //是否已访问过 available bool //是否可用 step int //走到这节点所需的步骤数目 } // 迷宫 type maze [][]node // 获取坐标 x,y处的node对象 func (m *maze) getPosition(x, y int) (n *node) { return &amp;((*m)[x][y]) } func (m *maze) getLineCount() int{ return len(*m) } func (m *maze) getColumnCount() int{ return len((*m)[0]) } var data = [5][9]int{ {0, 1, 0, 1, 0, 0, 0, 1, 0}, {0, 1, 0, 1, 0, 1, 0, 1, 0}, {0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 0, 1, 1, 1, 1, 1, 0}, {0, 1, 1, 1, 1, 1, 1, 1, 0}, } var directions = []point{ //四个方向,上-&gt;左-&gt;下-&gt;右 {-1, 0}, {0, -1}, {1, 0}, {0, 1}, } //存放待搜索的队列 var queue = []*node{} //初始化迷宫 func initNodes() *maze { ll := len(data) //行 cl := len(data[0]) //列 n := maze{} for i := 0; i &lt; ll; i++ { p := []node{} for j := 0; j &lt; cl; j++ { p = append(p, node{ vistied: false, available: data[i][j] == 0, point: point{ x: i, y: j, }, }) } n = append(n, p) } return &amp;n } // 四个方向移动,出界返回false,否则返回新节点 func (n *node) move(ns *maze, move point) (*node, bool) { if n.
+          <h1 id="广度优先-bfs">广度优先(BFS)</h1>
+
+<p><a href="https://zh.wikipedia.org/wiki/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2">WIKI介绍</a></p>
+
+<p>广度优先搜索算法（英语：Breadth-First-Search，缩写为BFS），又译作宽度优先搜索，或横向优先搜索，是一种图形搜索算法。简单的说，BFS是从根节点开始，沿着树的宽度遍历树的节点。如果所有节点均被访问，则算法中止。广度优先搜索的实现一般采用open-closed表。</p>
+
+<p>BFS是一种盲目搜索法，目的是系统地展开并检查图中的所有节点，以找寻结果。换句话说，它并不考虑结果的可能地址，彻底地搜索整张图，直到找到结果为止。BFS并不使用经验法则算法。</p>
+
+<p>从算法的观点，所有因为展开节点而得到的子节点都会被加进一个先进先出的队列中。一般的实现里，其邻居节点尚未被检验过的节点会被放置在一个被称为 open 的容器中（例如队列或是链表），而被检验过的节点则被放置在被称为 closed 的容器中。（open-closed表）</p>
+
+<p></p>
         </div>
-        <div class="article-readmore"><a href="/blog/posts/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E7%AE%97%E6%B3%95-golang%E5%AE%9E%E7%8E%B0/">Read more...</a></div>
+        <div class="article-readmore"><a href="/posts/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E7%AE%97%E6%B3%95-golang%E5%AE%9E%E7%8E%B0/">Read more...</a></div>
         <div class="article-floatclear"></div>
       </article>
     </section>
@@ -66,18 +81,18 @@
   <div class="copyright">&copy; 2018 |  <a href="https://github.com/taikii/whiteplain.git" target="_blank">whiteplain theme</a> & <a href="http://gohugo.io" target="_blank">Hugo</a> ♥</div>
   <ul class="site-footer-items">
     <li class="site-footer-item-rsslink">
-      <a href="/blog/posts/index.xml" type="application/rss+xml" target="_blank" title="RSS">
+      <a href="/posts/index.xml" type="application/rss+xml" target="_blank" title="RSS">
         <i class="fas fa-rss"></i>
       </a>
     </li>
-    <li class="site-footer-item-about"><a href="/blog/about/" title="关于">关于</a></li>
+    <li class="site-footer-item-about"><a href="/about/" title="关于">关于</a></li>
   </ul>
   <div class="powerdby">
     Powered by <a href="https://gohugo.io/">Hugo</a> and <a href="https://github.com/taikii/whiteplain">Whiteplain</a>
   </div>
 </div>
-<script src="/blog/js/script.js"></script>
-<script src="/blog/js/custom.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/custom.js"></script>
 
 
 </body>
